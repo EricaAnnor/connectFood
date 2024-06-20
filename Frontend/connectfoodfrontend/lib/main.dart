@@ -1,10 +1,10 @@
-import 'package:connectfoodfrontend/welcome.dart';
+import 'package:connectfoodfrontend/components/page_state.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
-      home: Welcome(),
+    MaterialApp(
+      home: Pages(),
     ),
   );
 }

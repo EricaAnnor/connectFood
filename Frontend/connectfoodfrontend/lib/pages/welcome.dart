@@ -1,4 +1,4 @@
-import 'package:connectfoodfrontend/signup.dart';
+import 'package:connectfoodfrontend/pages/signup.dart';
 import "package:flutter/material.dart";
 
 class Welcome extends StatelessWidget {
