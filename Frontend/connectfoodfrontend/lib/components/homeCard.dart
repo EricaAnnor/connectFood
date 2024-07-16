@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeCard extends StatefulWidget {
   const HomeCard({super.key});
@@ -9,8 +10,14 @@ class HomeCard extends StatefulWidget {
 }
 
 class _HomeCardState extends State<HomeCard> {
+  bool isExpanded = false;
+
   @override
   Widget build(BuildContext context) {
+    const String text =
+        'Guys, the combination of Gari and Peanuts is a Ghanaian delight. Discover this in our chocolate bars.'
+        '#peanut #chocolate #BIOKO #newfavorite #recommendation #delicious #yummy #foodie #foodlover #foodblogger';
+
     return Column(
       children: [
         Padding(
@@ -23,19 +30,19 @@ class _HomeCardState extends State<HomeCard> {
                   Row(children: [
                     Image.asset('assets/profile.png'),
                     const SizedBox(width: 14),
-                    const Align(
+                    Align(
                       alignment: Alignment.topLeft,
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Erica Annor',
-                                style: TextStyle(
+                                style: GoogleFonts.nunitoSans(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 16,
                                     color: Colors.black)),
                             Text(
                               '2d.',
-                              style: TextStyle(
+                              style: GoogleFonts.nunitoSans(
                                 fontWeight: FontWeight.w700,
                               ),
                               textAlign: TextAlign.left,
@@ -53,9 +60,9 @@ class _HomeCardState extends State<HomeCard> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 26, vertical: 8),
                     ),
-                    child: const Text(
+                    child: Text(
                       "Follow +",
-                      style: TextStyle(
+                      style: GoogleFonts.nunitoSans(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -65,15 +72,39 @@ class _HomeCardState extends State<HomeCard> {
                 ],
               ),
               const SizedBox(height: 10),
-              Container(child: Image.asset('assets/homeImage.png', width: 380)),
-              const SizedBox(height: 10),
-              const Text(
-                  'Strawberries are the only fruit with seeds on the outside, boasting about 200 seeds per berry!',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black)),
-              // const SizedBox(height: 5),
+              Container(child: Image.asset('assets/chocolate.png', width: 380)),
+              const SizedBox(height: 25),
+              Text.rich(
+                TextSpan(
+                  children: _getTextSpans(text, isExpanded ? text.length : 100),
+                ),
+                style: GoogleFonts.nunitoSans(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isExpanded = !isExpanded;
+                      });
+                    },
+                    child: Text(
+                      isExpanded ? 'See less' : 'See more',
+                      style: GoogleFonts.nunitoSans(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -81,18 +112,19 @@ class _HomeCardState extends State<HomeCard> {
                     children: [
                       IconButton(
                           onPressed: () {},
-                          icon: const Icon(
-                            Icons.favorite_border,
-                          )),
-                      const Text('25 likes',
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w500)),
+                          icon: const Icon(Icons.favorite_border, size: 30)),
+                      Text('25 likes',
+                          style: GoogleFonts.nunito(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black)),
                     ],
                   ),
                   IconButton(
                       onPressed: () {},
                       icon: const Icon(
                         CupertinoIcons.chat_bubble_text,
+                        size: 30,
                         color: Colors.black,
                       )),
                 ],
@@ -106,5 +138,31 @@ class _HomeCardState extends State<HomeCard> {
         ),
       ],
     );
+  }
+
+  List<TextSpan> _getTextSpans(String text, int length) {
+    final RegExp hashtagRegExp = RegExp(r'(#[a-zA-Z0-9_]+)');
+    final List<TextSpan> spans = [];
+    final String truncatedText =
+        text.length > length ? '${text.substring(0, length)}...' : text;
+
+    truncatedText.splitMapJoin(
+      hashtagRegExp,
+      onMatch: (Match match) {
+        spans.add(
+          TextSpan(
+            text: match.group(0),
+            style: const TextStyle(color: Color(0xFF26AE57)),
+          ),
+        );
+        return '';
+      },
+      onNonMatch: (String nonMatch) {
+        spans.add(TextSpan(text: nonMatch));
+        return '';
+      },
+    );
+
+    return spans;
   }
 }

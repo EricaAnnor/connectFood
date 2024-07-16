@@ -1,4 +1,6 @@
+import "package:connectfoodfrontend/components/forms/form1.dart";
 import 'package:connectfoodfrontend/components/profileCard.dart';
+import 'package:connectfoodfrontend/pages/myprofile.dart';
 import 'package:flutter/material.dart';
 
 class ConsultantPage extends StatefulWidget {
@@ -17,7 +19,14 @@ class _ConsultantPageState extends State<ConsultantPage> {
         child: AppBar(
             leading: Padding(
               padding: const EdgeInsets.only(top: 20.0, left: 14),
-              child: Image.asset('assets/profile.png'),
+              child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MyProfile()));
+                  },
+                  child: Image.asset('assets/profile.png')),
             ),
             title: const Padding(
               padding: EdgeInsets.only(top: 20, left: 34),
@@ -82,12 +91,25 @@ class _ConsultantPageState extends State<ConsultantPage> {
               Container(
                   child: Center(
                 child: Column(children: [
-                  Image.asset('assets/profile 1.png'),
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft:
+                          Radius.circular(20), // Adjust the radius as needed
+                      topRight:
+                          Radius.circular(20), // Adjust the radius as needed
+                    ),
+                    child: Image.asset(
+                      'assets/consul.png',
+                      width: 380,
+                      height: 350,   
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                   const Padding(
                     padding: EdgeInsets.only(left: 20, top: 16),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("Dr Agbo Tetteh",
+                      child: Text("Alberta Abban",
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w800,
@@ -100,7 +122,7 @@ class _ConsultantPageState extends State<ConsultantPage> {
                     ),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("Food nutritionist | Senior Researcher",
+                      child: Text("Food Scientist",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
@@ -150,34 +172,62 @@ class _ConsultantPageState extends State<ConsultantPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0, top: 5),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const ProfileCard()));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          backgroundColor: const Color(0xFF34A853),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50),
+                    padding:
+                        const EdgeInsets.only(left: 20.0, top: 5, right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Form1()));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor: const Color(0xFF34A853),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 34, vertical: 10),
                           ),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 34, vertical: 10),
-                        ),
-                        child: const Text(
-                          "View Profile",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
+                          child: const Text(
+                            "Consult ",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                      ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const ProfileCard()));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor: const Color(0xFFE3F3DD),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 34, vertical: 10),
+                          ),
+                          child: const Text(
+                            "View Profile",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   const SizedBox(
@@ -261,29 +311,52 @@ class _ConsultantPageState extends State<ConsultantPage> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20.0, top: 5),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            backgroundColor: const Color(0xFFE3F3DD),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
+                      padding:
+                          const EdgeInsets.only(left: 20.0, top: 5, right: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              backgroundColor: const Color(0xFF34A853),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 34, vertical: 10),
                             ),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 34, vertical: 10),
-                          ),
-                          child: const Text(
-                            "View Profile",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black,
+                            child: const Text(
+                              "Consult ",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              backgroundColor: const Color(0xFFE3F3DD),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 34, vertical: 10),
+                            ),
+                            child: const Text(
+                              "View Profile",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ]),

@@ -1,5 +1,6 @@
 import 'package:connectfoodfrontend/pages/signup.dart';
 import "package:flutter/material.dart";
+import 'package:google_fonts/google_fonts.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
@@ -25,23 +26,23 @@ class Welcome extends StatelessWidget {
                   Image.asset(
                     "assets/splashImg.png",
                   ),
-                  const Column(children: [
+                  Column(children: [
                     Text(
                       "Elevate your food",
-                      style: TextStyle(
+                      style: GoogleFonts.nunitoSans(
                           fontSize: 32,
                           // fontFamily: 'Poppins',
                           fontWeight: FontWeight.w900,
-                          color: Color(0xFF26AE57)),
+                          color: const Color(0xFF26AE57)),
                     ),
                     Center(
                       child: Text(
                         "operations",
-                        style: TextStyle(
+                        style: GoogleFonts.nunitoSans(
                             fontSize: 32,
                             fontWeight: FontWeight.w900,
                             // fontFamily: 'Poppins',
-                            color: Color(0xFF26AE57)),
+                            color: const Color(0xFF26AE57)),
                       ),
                     )
                   ]),

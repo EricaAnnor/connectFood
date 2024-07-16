@@ -1,5 +1,8 @@
 import 'package:connectfoodfrontend/components/homeCard.dart';
+import 'package:connectfoodfrontend/pages/myprofile.dart';
+import 'package:connectfoodfrontend/pages/notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,10 +32,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.only(top: 20.0, left: 14),
-          child: Image.asset('assets/profile.png'),
+          child: GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const MyProfile()));
+              },
+              child: Image.asset('assets/profile.png')),
         ),
-        title: const Padding(
-          padding: EdgeInsets.only(top: 20, left: 34),
+        title: Padding(
+          padding: const EdgeInsets.only(top: 20, left: 34),
           child: SizedBox(
             width: 220,
             height: 36,
@@ -40,16 +48,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               child: TextField(
                 textAlign: TextAlign.left,
                 decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(top: 10.0),
+                  contentPadding: const EdgeInsets.only(top: 10.0),
                   hintText: "Search",
-                  prefixIcon: Icon(Icons.search),
+                  prefixIcon: const Icon(Icons.search),
                   alignLabelWithHint: true,
-                  labelStyle: TextStyle(height: 2.0),
-                  enabledBorder: OutlineInputBorder(
+                  labelStyle: GoogleFonts.nunitoSans(height: 2.0),
+                  enabledBorder: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(color: Color(0xFF34A853)),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(color: Color(0xFF34A853)),
                   ),
@@ -61,10 +69,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         actions: [
           Padding(
             padding: const EdgeInsets.only(top: 16, right: 10, bottom: 30),
-            child: IconButton(
-              icon: const Icon(Icons.notifications,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Notifications()));
+              },
+              child: const Icon(Icons.notifications,
                   size: 30, color: Color(0xFF34A853)),
-              onPressed: () {},
             ),
           ),
         ],
@@ -88,7 +101,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         : const Color(0xFFE3F3DD),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const Center(child: Text("All")),
+                  child: Center(
+                      child: Text(
+                    "All",
+                    style: GoogleFonts.nunitoSans(),
+                  )),
                 ),
               ),
               Padding(
@@ -102,7 +119,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         : const Color(0xFFE3F3DD),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const Center(child: Text("Problems")),
+                  child: Center(
+                      child: Text("Facts", style: GoogleFonts.nunitoSans())),
                 ),
               ),
               Padding(
@@ -116,21 +134,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         : const Color(0xFFE3F3DD),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const Center(child: Text("Facts")),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: Container(
-                  width: 120,
-                  height: 36,
-                  decoration: BoxDecoration(
-                    color: _selectedIndex == 3
-                        ? const Color(0xFF26AE57)
-                        : const Color(0xFFE3F3DD),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Center(child: Text("Hygiene")),
+                  child: Center(
+                      child: Text("Hygiene", style: GoogleFonts.nunitoSans())),
                 ),
               ),
             ],
@@ -141,14 +146,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         controller: _tabController,
         children: const [
           SingleChildScrollView(
-            child: Column(children: [
-              HomeCard(),
-              HomeCard(),
-            ]),
-          ),
+              child: Column(children: [
+            HomeCard(),
+            HomeCard(),
+          ])),
           Center(child: Text('Content of Tab 2')),
           Center(child: Text('Content of Tab 3')),
-          Center(child: Text('Content of Tab 4')),
         ],
       ),
     );
@@ -163,7 +166,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
 
     _tabController.addListener(() {
       setState(() {

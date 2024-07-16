@@ -1,4 +1,6 @@
+import 'package:connectfoodfrontend/components/page_state.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Signin extends StatefulWidget {
   const Signin({super.key});
@@ -35,16 +37,16 @@ class _SigninState extends State<Signin> {
                   child: Center(
                     child: Column(
                       children: [
-                        const Padding(
-                          padding:
-                              EdgeInsets.only(top: 56, left: 30, bottom: 20),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 56, left: 30, bottom: 20),
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
                               "Sign In",
-                              style: TextStyle(
+                              style: GoogleFonts.nunitoSans(
                                 fontSize: 32,
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w700,
                                 color: Colors.black,
                               ),
                             ),
@@ -55,14 +57,14 @@ class _SigninState extends State<Signin> {
                             children: [
                               Column(
                                 children: [
-                                  const Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 34),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 34),
                                     child: Align(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
                                         'Email',
-                                        style: TextStyle(
+                                        style: GoogleFonts.nunitoSans(
                                           fontSize: 18,
                                           color: Colors.black,
                                           fontWeight: FontWeight.w400,
@@ -94,14 +96,14 @@ class _SigninState extends State<Signin> {
                               const SizedBox(height: 20),
                               Column(
                                 children: [
-                                  const Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 34),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 34),
                                     child: Align(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
                                         'Password',
-                                        style: TextStyle(
+                                        style: GoogleFonts.nunitoSans(
                                           fontSize: 18,
                                           color: Colors.black,
                                           fontWeight: FontWeight.w400,
@@ -135,7 +137,13 @@ class _SigninState extends State<Signin> {
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 20, horizontal: 30),
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const Pages()),
+                                    );
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color(0xFF26AE57),
                                     shape: RoundedRectangleBorder(
@@ -174,11 +182,12 @@ class _SigninState extends State<Signin> {
                                   ),
                                 ),
                               ),
-                              const Padding(
-                                padding: EdgeInsets.only(left: 30, right: 30),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 30, right: 30),
                                 child: Text(
                                   'or',
-                                  style: TextStyle(
+                                  style: GoogleFonts.nunitoSans(
                                     fontSize: 16,
                                     color: Colors.black,
                                     fontWeight: FontWeight.w500,
@@ -228,11 +237,12 @@ class _SigninState extends State<Signin> {
                         ),
                         Row(
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.only(top: 12.0, left: 80),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 12.0, left: 80),
                               child: Text(
                                 "Already have an account?",
-                                style: TextStyle(
+                                style: GoogleFonts.nunitoSans(
                                   fontSize: 15,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -241,10 +251,13 @@ class _SigninState extends State<Signin> {
                             Padding(
                               padding: const EdgeInsets.only(top: 12.0),
                               child: TextButton(
-                                onPressed: () {},
-                                child: const Text(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
                                   'Sign up',
-                                  style: TextStyle(color: Color(0xFF26AE57)),
+                                  style: GoogleFonts.nunitoSans(
+                                      color: const Color(0xFF26AE57)),
                                 ),
                               ),
                             ),

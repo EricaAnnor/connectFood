@@ -1,5 +1,7 @@
+import 'package:connectfoodfrontend/components/page_state.dart';
 import 'package:connectfoodfrontend/pages/signin.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -45,13 +47,14 @@ class _SignupState extends State<Signup> {
                       ),
                     ),
                     child: Column(children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 38, left: 30, bottom: 20),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 38, left: 30, bottom: 20),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
                             "Sign Up",
-                            style: TextStyle(
+                            style: GoogleFonts.nunitoSans(
                               fontSize: 32,
                               fontWeight: FontWeight.w600,
                               color: Colors.black,
@@ -63,12 +66,13 @@ class _SignupState extends State<Signup> {
                         child: Column(
                           children: [
                             Column(children: [
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 35),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 35),
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text('Name',
-                                      style: TextStyle(
+                                      style: GoogleFonts.nunitoSans(
                                         fontSize: 18,
                                         color: Colors.black,
                                         fontWeight: FontWeight.w400,
@@ -96,12 +100,13 @@ class _SignupState extends State<Signup> {
                             ]),
                             const SizedBox(height: 14),
                             Column(children: [
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 34),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 34),
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text('Email',
-                                      style: TextStyle(
+                                      style: GoogleFonts.nunitoSans(
                                         fontSize: 18,
                                         color: Colors.black,
                                         fontWeight: FontWeight.w400,
@@ -129,12 +134,13 @@ class _SignupState extends State<Signup> {
                             ]),
                             const SizedBox(height: 14),
                             Column(children: [
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 34),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 34),
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text('Password',
-                                      style: TextStyle(
+                                      style: GoogleFonts.nunitoSans(
                                         fontSize: 18,
                                         color: Colors.black,
                                         fontWeight: FontWeight.w400,
@@ -176,13 +182,13 @@ class _SignupState extends State<Signup> {
                                       });
                                     },
                                   ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(top: 16.0),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 16.0),
                                     child: Column(
                                       children: [
                                         Text(
                                           "I agree to all the terms included in the",
-                                          style: TextStyle(
+                                          style: GoogleFonts.nunitoSans(
                                             fontSize: 14,
                                             color: Colors.black,
                                             fontWeight: FontWeight.w500,
@@ -190,9 +196,9 @@ class _SignupState extends State<Signup> {
                                         ),
                                         Text(
                                           " Terms of Service",
-                                          style: TextStyle(
+                                          style: GoogleFonts.nunitoSans(
                                             fontSize: 14,
-                                            color: Color(0xFF26AE57),
+                                            color: const Color(0xFF26AE57),
                                             fontWeight: FontWeight.w500,
                                           ),
                                         )
@@ -206,7 +212,13 @@ class _SignupState extends State<Signup> {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 20, horizontal: 30),
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const Pages()),
+                                  );
+                                },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: const Color(0xFF26AE57),
                                   shape: RoundedRectangleBorder(
@@ -215,9 +227,9 @@ class _SignupState extends State<Signup> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 64, vertical: 14),
                                 ),
-                                child: const Text(
+                                child: Text(
                                   "Create Account",
-                                  style: TextStyle(
+                                  style: GoogleFonts.nunitoSans(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.white,
@@ -241,10 +253,11 @@ class _SignupState extends State<Signup> {
                                   color: Colors.black,
                                   width: 1,
                                 ))))),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 30, right: 30),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 30, right: 30),
                               child: Text('or',
-                                  style: TextStyle(
+                                  style: GoogleFonts.nunitoSans(
                                     fontSize: 16,
                                     color: Colors.black,
                                     fontWeight: FontWeight.w500,
@@ -288,10 +301,10 @@ class _SignupState extends State<Signup> {
                               ))),
                       Row(
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.only(top: 12.0, left: 80),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 12.0, left: 80),
                             child: Text("Already have an acount?",
-                                style: TextStyle(
+                                style: GoogleFonts.nunitoSans(
                                     fontSize: 15, fontWeight: FontWeight.w600)),
                           ),
                           Padding(
@@ -304,9 +317,10 @@ class _SignupState extends State<Signup> {
                                       builder: (context) => const Signin()),
                                 );
                               },
-                              child: const Text(
+                              child: Text(
                                 'Login',
-                                style: TextStyle(color: Color(0xFF26AE57)),
+                                style: GoogleFonts.nunitoSans(
+                                    color: const Color(0xFF26AE57)),
                               ),
                             ),
                           ),

@@ -1,7 +1,7 @@
+import 'package:connectfoodfrontend/pages/consultant.dart';
 import 'package:connectfoodfrontend/pages/home.dart';
 import 'package:connectfoodfrontend/pages/job.dart';
-import 'package:connectfoodfrontend/pages/profile.dart';
-import 'package:connectfoodfrontend/pages/consultant.dart';
+import 'package:connectfoodfrontend/pages/post.dart';
 import 'package:flutter/material.dart';
 
 class Pages extends StatefulWidget {
@@ -16,8 +16,8 @@ class _PageState extends State<Pages> {
 
   final List<Widget> _children = [
     const HomePage(),
-    ConsultantPage(),
-    ProfilePage(),
+    const ConsultantPage(),
+    Container(), // Empty container for the PostPage
     const JobPage(),
   ];
 
@@ -55,12 +55,21 @@ class _PageState extends State<Pages> {
             label: 'Get a Job',
           ),
         ],
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+        onTap: _onItemTapped,
       ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    if (index == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const PostPage()),
+      );
+    } else {
+      setState(() {
+        _currentIndex = index;
+      });
+    }
   }
 }
